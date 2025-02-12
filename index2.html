@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff4d6d;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+        #noBtn {
+            background-color: #ccc;
+            position: absolute;
+        }
+        #message {
+            display: none;
+            font-size: 3em;
+            color: white;
+            text-align: center;
+        }
+        #pleadMessage {
+            display: none;
+            font-size: 1.5em;
+            color: #ff4d6d;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="question">Will you be my Valentine? 💖</h1>
+    <div class="buttons" id="buttonsContainer">
+        <button id="yesBtn" onclick="showLoveMessage()">Yes</button>
+        <button id="noBtn" onclick="moveNoBtn()">No</button>
+    </div>
+    <p id="pleadMessage">Are you sure you don't want to be my Valentine? 🥺 Please 👉👈🥺</p>
+    <h1 id="message">YAY !! I LOVE YOU SO MUCH !! ❤️😊💕🌹</h1>
+
+    <script>
+        let yesBtn = document.getElementById("yesBtn");
+        let yesSize = 1.5; // Initial font size (in em)
+
+        function showLoveMessage() {
+            document.body.style.backgroundColor = "#ff4d6d"; // Change background color
+            document.getElementById("question").style.display = "none"; // Hide question
+            document.getElementById("buttonsContainer").style.display = "none"; // Hide buttons
+            document.getElementById("pleadMessage").style.display = "none"; // Hide pleading message
+            document.getElementById("message").style.display = "block"; // Show the final message
+        }
+
+        function moveNoBtn() {
+            let noBtn = document.getElementById("noBtn");
+            let pleadMessage = document.getElementById("pleadMessage");
+
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+
+            pleadMessage.style.display = "block";
+
+            // Make the Yes button grow bigger
+            yesSize += 0.3; // Increase size
+            yesBtn.style.fontSize = `${yesSize}em`;
+            yesBtn.style.padding = `${yesSize * 6}px ${yesSize * 12}px`; // Adjust padding so it grows proportionally
+        }
+    </script>
+</body>
+</html>
